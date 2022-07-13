@@ -48,25 +48,25 @@
         </div>
     <div class="col-md-8">
         <div class="row">
-            <a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                <img src="https://unsplash.it/600.jpg?image=251" class="img-fluid">
+            <a href="{{asset('assets/landing/images/g/1.jpeg')}}" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                <img src="{{asset('assets/landing/images/g/1.jpeg')}}" class="img-fluid">
             </a>
-            <a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                <img src="https://unsplash.it/600.jpg?image=252" class="img-fluid">
+            <a href="{{asset('assets/landing/images/g/2.jpeg')}}" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                <img src="{{asset('assets/landing/images/g/2.jpeg')}}" class="img-fluid">
             </a>
-            <a href="https://unsplash.it/1200/768.jpg?image=253" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                <img src="https://unsplash.it/600.jpg?image=253" class="img-fluid">
+            <a href="{{asset('assets/landing/images/g/3.jpeg')}}" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                <img src="{{asset('assets/landing/images/g/3.jpeg')}}" class="img-fluid">
             </a>
         </div>
         <div class="row">
-            <a href="https://unsplash.it/1200/768.jpg?image=254" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                <img src="https://unsplash.it/600.jpg?image=254" class="img-fluid">
+            <a href="{{asset('assets/landing/images/g/4.jpeg')}}" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                <img src="{{asset('assets/landing/images/g/4.jpeg')}}" class="img-fluid">
             </a>
-            <a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid">
+            <a href="{{asset('assets/landing/images/g/5.jpeg')}}" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                <img src="{{asset('assets/landing/images/g/5.jpeg')}}" class="img-fluid">
             </a>
-            <a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid">
+            <a href="{{asset('assets/landing/images/g/6.jpeg')}}" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                <img src="{{asset('assets/landing/images/g/6.jpeg')}}" class="img-fluid">
             </a>
         </div>
     </div>

@@ -1,5 +1,5 @@
 @extends('layouts.master_dashboard')
-@section('title','Tambahkan Pengguna')
+@section('title','Ubah data Pengguna')
 @section('content')
 <form action="{{route('pengguna.update')}}" method="POST">
 	@csrf

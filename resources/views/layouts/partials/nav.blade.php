@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent @if(Request::route()->getName() == 'landing') fixed-on-scroll @endif">
             <div class="container">
-                <a class="navbar-brand" href="#">SITARI</a>
+                <a class="navbar-brand" href="#"><img src="{{asset('assets/logo/sitari.png')}}" height="60px"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#miriUiKitNavbar"
                     aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="mdi mdi-menu"></span>

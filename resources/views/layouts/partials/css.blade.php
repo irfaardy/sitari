@@ -5,3 +5,4 @@
 
     <!-- Base css with customised bootstrap included -->
     <link rel="stylesheet" href="{{asset('assets/landing/css/miri-ui-kit-free.css')}}">
+
