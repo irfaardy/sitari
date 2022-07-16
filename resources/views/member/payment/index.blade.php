@@ -41,7 +41,7 @@
 						</table>
 						@else
 						<div class="alert alert-success" align="center">
-								<i class="fas fa-check mr-2 fa-3x"></i><br>Terimakasih<br>Tagihan telah dibayarkan, anda dapat melihat pembayaran sebelumnya di "Riwayat Pembayaran"
+								<i class="fas fa-check mr-2 fa-3x"></i><br>Terimakasih<br>Tagihan bulan ini telah dibayarkan, anda dapat melihat pembayaran sebelumnya di "Riwayat Pembayaran"
 							</div>
 						@endif
 						<hr>
