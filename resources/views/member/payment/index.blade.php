@@ -17,7 +17,7 @@
 						<b>Rincian tagihan:</b>
 						<table class="table table-bordered">
 							<tr>
-								<td>Biaya Per-Hari</td>
+								<td>Biaya Per-Sesi</td>
 								<td align="right">Rp{{number_format($biaya->harga)}}</td>
 							</tr>
 							<tr>
