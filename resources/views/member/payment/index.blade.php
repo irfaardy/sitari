@@ -12,10 +12,10 @@
 			<div class="card">
 				<div class="card-body">
 					@if($status != 1)
-					<h5>Anda memiliki tagihan sanggar tari sebesar 
-						<br><b>Rp{{number_format(($biaya->harga+$biaya->administrasi+(($biaya->harga+$biaya->administrasi)*($biaya->ppn/100))) * $presensi)}}</b></h5>
+					 
+						<div align="center"><h5>Anda memiliki tagihan sanggar tari sebesar</h5><h4><b>Rp{{number_format(($biaya->harga+$biaya->administrasi+(($biaya->harga+$biaya->administrasi)*($biaya->ppn/100))) * $presensi)}}</b></h4></div>
 						<b>Rincian tagihan:</b>
-						<table class="table table-bordered">
+						<table class="table table-bordered table-striped">
 							<tr>
 								<td>Biaya Per-Sesi</td>
 								<td align="right">Rp{{number_format($biaya->harga)}}</td>
@@ -31,7 +31,7 @@
 							</tr>
 							@endif
 							<tr>
-								<td>Jumlah Absensi</td>
+								<td>Jumlah Absensi (Hadir)</td>
 								<td align="right">{{$presensi}}</td>
 							</tr>
 							<tr>
