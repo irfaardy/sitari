@@ -12,7 +12,7 @@
             </a>
           </li> 
           {{-- Admin --}}
-        
+        @if(auth()->user()->role == 'admin')
               <li class="nav-item">
                 <a href="{{route('pengguna')}}" class="nav-link">
                   <i class="far fa-user nav-icon"></i>
@@ -39,14 +39,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('biaya')}}" class="nav-link">
               <i class="nav-icon fas fa-wrench"></i>
               <p>
-                 Pengaturan Sistem
+                 Pengaturan Biaya
                 
               </p>
             </a>
           </li>
+          {{-- D --}}
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-money-check"></i>
@@ -56,9 +57,11 @@
               </p>
             </a>
           </li>
+          @endif
           {{-- Anggota --}}
+          @if(auth()->user()->role == 'member')
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('member.pembayaran')}}" class="nav-link">
               <i class="nav-icon fas fa-money-check"></i>
               <p>
                  Pembayaran
@@ -66,6 +69,7 @@
               </p>
             </a>
           </li>
+          @endif
            
         </ul>
       </nav>

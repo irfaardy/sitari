@@ -37,7 +37,16 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/presensi/update', [App\Http\Controllers\PresensiController::class, 'update'])->name('presensi.update');
         Route::get('/presensi/edit/{id}', [App\Http\Controllers\PresensiController::class, 'edit'])->name('presensi.edit');
         Route::get('/presensi/delete/{id}', [App\Http\Controllers\PresensiController::class, 'delete'])->name('presensi.delete');
+
+    //Presensi
+        Route::get('/biaya-sanggar', [App\Http\Controllers\BiayaSanggarController::class, 'index'])->name('biaya');
+        Route::post('/biaya-sanggar/update', [App\Http\Controllers\BiayaSanggarController::class, 'update'])->name('biaya.update');
         
         
 // END ADMIN
+// MEMBER
+    Route::get('/pembayaran', [App\Http\Controllers\PembayaranController::class, 'index'])->name('member.pembayaran');
+    Route::get('/checkout', [App\Http\Controllers\PembayaranController::class, 'checkout'])->name('member.pembayaran.proses'); 
+    Route::post('/checkout/upload', [App\Http\Controllers\PembayaranController::class, 'upload'])->name('member.pembayaran.upload');
+//END MEMBER
 });
