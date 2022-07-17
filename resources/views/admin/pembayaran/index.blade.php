@@ -26,7 +26,7 @@
 							<td>{{$dt->user->name}}</td>
 							<td>{{$dt->user->no_hp}}</td>
 							<td>{{$dt->jumlah_presensi}}</td>
-							<td>{{$dt->total_harga}}</td>
+							<td>Rp{{number_format($dt->total_harga)}}</td>
 							<td>
 								@if($dt->status == 0)
 									<span class="badge badge-secondary">Menunggu Verifikasi</span>
