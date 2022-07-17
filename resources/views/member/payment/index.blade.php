@@ -16,7 +16,7 @@
 						<div align="center"><h5>Anda memiliki tagihan sanggar tari sebesar</h5><h4><b>Rp{{number_format(($biaya->harga+$biaya->administrasi+(($biaya->harga+$biaya->administrasi)*($biaya->ppn/100))) * $presensi)}}</b></h4></div>
 						<b>Rincian tagihan:</b>
 						<table class="table table-bordered table-striped">
-							@if($status == 0 OR $status == 2)
+							@if(!empty($invoice))
 							<tr>
 								<td>Invoice Code</td>
 								<td align="right">{{$invoice}}</td>
