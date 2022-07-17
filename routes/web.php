@@ -46,7 +46,8 @@ Route::group(['middleware' => ['auth']], function () {
 // END ADMIN
 // MEMBER
     Route::get('/pembayaran', [App\Http\Controllers\PembayaranController::class, 'index'])->name('member.pembayaran');
-    Route::get('/checkout', [App\Http\Controllers\PembayaranController::class, 'checkout'])->name('member.pembayaran.proses'); 
-    Route::post('/checkout/upload', [App\Http\Controllers\PembayaranController::class, 'upload'])->name('member.pembayaran.upload');
+    Route::get('/pembayaran/checkout', [App\Http\Controllers\PembayaranController::class, 'checkout'])->name('member.pembayaran.proses'); 
+    Route::get('/pembayaran/riwayat-pembayaran', [App\Http\Controllers\PembayaranController::class, 'riwayat_pembayaran'])->name('member.pembayaran.history'); 
+    Route::post('/pembayaran/checkout/upload', [App\Http\Controllers\PembayaranController::class, 'upload'])->name('member.pembayaran.upload');
 //END MEMBER
 });

@@ -19,14 +19,24 @@ class PembayaranController extends Controller
         $biaya = BiayaSanggar::where('code','B-001')->first();
         $cek_pembayaran = Pembayaran::where('dibayarkan_pada','like',date('Y-m').'%')->where('user_id', auth()->user()->id);
         $sts = empty($cek_pembayaran->first()) ? null:$cek_pembayaran->first()->status; 
-        return view('member/payment/index')->with(['presensi' => $presensi,'biaya' => $biaya,'status' => $sts,'cek_pembayaran' => $cek_pembayaran->count()]);
+        $invoice = empty($cek_pembayaran->first()) ? null:$cek_pembayaran->first()->invoice_code; 
+        return view('member/payment/index')->with(['presensi' => $presensi,'biaya' => $biaya,'status' => $sts,'cek_pembayaran' => $cek_pembayaran->count(),'invoice' => $invoice]);
     } 
+
+    public function riwayat_pembayaran(Request $request)
+    {
+        $pembayaran = Pembayaran::where('user_id', auth()->user()->id)->orderBy('dibayarkan_pada','DESC')->get();
+        return view('member/payment/riwayat_pembayaran')->with(['pembayaran' => $pembayaran]);
+    }
 
     public function checkout()
     {
         $presensi = Presensi::where('user_id',auth()->user()->id)->where('status_kehadiran','H')->count();
         $biaya = BiayaSanggar::where('code','B-001')->first();
-       
+        if($presensi == 0)
+        {
+            return redirect()->route('member.pembayaran')->with(['message_fail' => 'Kehadiran anda masih 0 buluan ini']);  
+        }
         $val = (object)['biaya' => $biaya->harga,
                 'administrasi' => $biaya->administrasi, 
                 'ppn' => $biaya->ppn,
@@ -54,6 +64,7 @@ class PembayaranController extends Controller
         $cache = Cache::get(auth()->user()->id.'-payment');
         $params = [
            'user_id' => auth()->user()->id,
+           'invoice_code' => "INV/".date('Y')."/".date("m")."/".time(),
            'bukti_transfer' => $this->imageProcessing($request->bukti_transfer),
            'jumlah_presensi' => $cache->presensi,
            'harga' => $cache->biaya,
