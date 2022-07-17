@@ -30,7 +30,7 @@
             </a>
           </li> 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{{route('admin.pembayaran')}}" class="nav-link">
               <i class="nav-icon fas fa-money-check"></i>
               <p>
                  Kelola Pembayaran

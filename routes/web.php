@@ -21,6 +21,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 //Admin
+    //Pembayaran
+        Route::get('/img/pembayaran/{file}', [App\Http\Controllers\ImgController::class, 'buktiTF'])->name('img.tf'); 
+
+        Route::get('/kelola/pembayaran', [App\Http\Controllers\AdmPembayaranController::class, 'index'])->name('admin.pembayaran'); 
+        Route::get('/kelola/pembayaran/acc/{id}', [App\Http\Controllers\AdmPembayaranController::class, 'acc'])->name('admin.pembayaran.acc');
+        Route::get('/kelola/pembayaran/revoke/{id}', [App\Http\Controllers\AdmPembayaranController::class, 'revoke'])->name('admin.pembayaran.revoke');
     //Pengguna
         Route::get('/penguna', [App\Http\Controllers\UserController::class, 'index'])->name('pengguna');
         Route::get('/penguna/create', [App\Http\Controllers\UserController::class, 'create'])->name('pengguna.create');

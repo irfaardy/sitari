@@ -28,11 +28,11 @@
 							<td>{{$dt->jumlah_presensi}}</td>
 							<td>{{$dt->total_harga}}</td>
 							<td>
-								@if($dt->status_pembayaran == 0)
+								@if($dt->status == 0)
 									<span class="badge badge-secondary">Menunggu Verifikasi</span>
-								@elseif($dt->status_pembayaran == 1)
+								@elseif($dt->status == 1)
 									<span class="badge badge-success">Lunas</span>
-								@elseif($dt->status_pembayaran == 2)
+								@elseif($dt->status == 2)
 									<span class="badge badge-success">Ditolak</span>
 								@endif
 							</td>
