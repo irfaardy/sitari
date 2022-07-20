@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Presensi;
 use App\Models\User;
+use App\Exports\PresensiExport;
 use Hash;
 class PresensiController extends Controller
 {
@@ -14,6 +15,13 @@ class PresensiController extends Controller
     {
         $presensi = Presensi::get();
         return view('admin/presensi/index')->with(['presensi' => $presensi]);
+    }
+
+    public function export(Request $request)
+    {
+         $presensi = Presensi::whereBetween('tanggal', [$request->start, $request->end])->get();
+         $range = $request->start." s/d ".$request->end;
+         return \Excel::download(new PresensiExport($presensi,$range), 'Presensi_'.str_replace("/", "", $range).'.xlsx');
     }
 
     public function create()

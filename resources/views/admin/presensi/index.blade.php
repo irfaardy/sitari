@@ -9,9 +9,42 @@
 					<a href="{{route('presensi.create')}}" class="btn btn-primary btn-block">Tambah Presensi</a>
 				</div>
 				<div class="col-sm-12 col-md-6">
-					<a href="{{route('presensi.create')}}" class="btn btn-primary btn-block">Export Presensi</a>
+					<a href="#"  data-toggle="modal" data-target="#export" class="btn btn-primary btn-block">Export Presensi</a>
 				</div>
 			</div>
+			<!-- Modal -->
+			<form action="{{route('presensi.export')}}" method="POST">
+			<div class="modal fade" id="export" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Export Presensi
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			      	@csrf
+			        	<div class="row">
+			        		<div class="col-md-6">
+			        			<label>Tgl Awal</label>
+			        			<input type="date" name="start" class="form-control">
+			        		</div>
+			        		<div class="col-md-6">
+			        			<label>Tgl Akhir</label>
+			        			<input type="date" name="end" class="form-control">
+			        		</div>
+			        	</div>
+			       
+			      </div>
+			      <div class="modal-footer">
+			       
+			        <button type="submit" class="btn btn-primary">Expor Presensi</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			 </form>
 		</div>
 		<div class="col-12">
 			<hr>

@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
     //Presensi
         Route::get('/presensi', [App\Http\Controllers\PresensiController::class, 'index'])->name('presensi');
         Route::get('/presensi/create', [App\Http\Controllers\PresensiController::class, 'create'])->name('presensi.create');
+        Route::post('/presensi/export', [App\Http\Controllers\PresensiController::class, 'export'])->name('presensi.export');
         Route::post('/presensi/save', [App\Http\Controllers\PresensiController::class, 'save'])->name('presensi.save');
         Route::post('/presensi/update', [App\Http\Controllers\PresensiController::class, 'update'])->name('presensi.update');
         Route::get('/presensi/edit/{id}', [App\Http\Controllers\PresensiController::class, 'edit'])->name('presensi.edit');
