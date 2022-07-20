@@ -14,6 +14,7 @@ class PresensiController extends Controller
     public function index()
     {
         $presensi = Presensi::get();
+
         return view('admin/presensi/index')->with(['presensi' => $presensi]);
     }
 
@@ -21,6 +22,10 @@ class PresensiController extends Controller
     {
          $presensi = Presensi::whereBetween('tanggal', [$request->start, $request->end])->get();
          $range = $request->start." s/d ".$request->end;
+        if(empty(count($presensi)))
+        {
+             return redirect()->route('presensi')->with(['message_fail' => 'Tidak ada data presensi pada tanggal '.$range.'.']); 
+        }
          return \Excel::download(new PresensiExport($presensi,$range), 'Presensi_'.str_replace("/", "", $range).'.xlsx');
     }
 

@@ -9,7 +9,7 @@
 					<a href="{{route('presensi.create')}}" class="btn btn-primary btn-block">Tambah Presensi</a>
 				</div>
 				<div class="col-sm-12 col-md-6">
-					<a href="#"  data-toggle="modal" data-target="#export" class="btn btn-primary btn-block">Export Presensi</a>
+					<a href="#"  data-toggle="modal" data-target="#export" class="btn btn-outline-success  btn-block">Export Presensi</a>
 				</div>
 			</div>
 			<!-- Modal -->
