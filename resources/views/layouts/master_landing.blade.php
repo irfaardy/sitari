@@ -24,7 +24,7 @@
             class="miri-ui-kit-header-content  text-white d-flex flex-column justify-content-center container text-right">
             <h1 class="display-3 text-white text"></h1>
             {{-- <p class="h3 font-weight-light text-white"></p> --}}
-            <p class="mt-4"><button class="btn btn-success btn-pill">Daftar</button></p>
+            <p class="mt-4"><a href="{{route('register')}}" class="btn btn-success btn-pill">Daftar</a></p>
         </div>
     </header>
     @yield('content')

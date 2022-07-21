@@ -31,7 +31,7 @@
     <footer class="pt-5 mt-2">
         <div class="container">
             <nav class="navbar navbar-light bg-transparent navbar-expand d-block d-sm-flex text-center">
-                <span class="navbar-text">&copy; Indihealth. All rights reserved.</span>
+                <span class="navbar-text">&copy; Sanggar Tari. All rights reserved.</span>
                 <div class="navbar-nav ml-auto justify-content-center">
                     <a href="#" class="nav-link">Support</a>
                     <a href="#" class="nav-link">Terms</a>
