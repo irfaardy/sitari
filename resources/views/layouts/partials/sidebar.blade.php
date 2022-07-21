@@ -33,8 +33,16 @@
             <a href="{{route('admin.pembayaran')}}" class="nav-link">
               <i class="nav-icon fas fa-money-check"></i>
               <p>
-                 Kelola Pembayaran
-                
+                 Kelola Pembayaran 
+                 @if(PembayaranHelper::cek_menunggu() > 0)
+                   <span class="badge badge-danger">
+                    {{PembayaranHelper::cek_menunggu()}}
+                      </span>
+                  @elseif(PembayaranHelper::cek_menunggu() > 100)
+                  <span class="badge badge-danger">
+                    100+
+                      </span>
+                  @endif
               </p>
             </a>
           </li>
@@ -48,15 +56,7 @@
             </a>
           </li>
           {{-- D --}}
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-money-check"></i>
-              <p>
-                 Laporan Pembayaran
-                
-              </p>
-            </a>
-          </li>
+        
           @endif
           {{-- Anggota --}}
           @if(auth()->user()->role == 'member')
