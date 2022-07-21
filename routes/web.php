@@ -26,6 +26,8 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('/kelola/pembayaran', [App\Http\Controllers\AdmPembayaranController::class, 'index'])->name('admin.pembayaran'); 
         Route::get('/kelola/pembayaran/acc/{id}', [App\Http\Controllers\AdmPembayaranController::class, 'acc'])->name('admin.pembayaran.acc');
+
+        Route::post('/kelola/pembayaran/download-laporan', [App\Http\Controllers\AdmPembayaranController::class, 'export'])->name('admin.pembayaran.export');
         Route::get('/kelola/pembayaran/revoke/{id}', [App\Http\Controllers\AdmPembayaranController::class, 'revoke'])->name('admin.pembayaran.revoke');
     //Pengguna
         Route::get('/penguna', [App\Http\Controllers\UserController::class, 'index'])->name('pengguna');

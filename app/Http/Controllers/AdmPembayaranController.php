@@ -10,6 +10,7 @@ use Hash;
 use Image;
 use Cache;
 use Ramsey\Uuid\Uuid;
+use App\Exports\TransaksiExport;
 
 class AdmPembayaranController extends Controller
 { 
@@ -18,6 +19,34 @@ class AdmPembayaranController extends Controller
         $pembayaran = Pembayaran::orderBy('dibayarkan_pada','DESC')->get();
         return view('admin/pembayaran/index')->with(['pembayaran' => $pembayaran]);
     }  
+
+    public function export(Request $request)
+    {
+       $pembayaran = Pembayaran::whereBetween('dibayarkan_pada', [$request->start."  00:00:00", $request->end."  00:00:00"])->where('status',$request->status)->get();
+         $range = $request->start." s/d ".$request->end;
+        if($request->status == 0)
+        {
+            $status = 'Menunggu Verifikasi Admin';
+        }
+        elseif($request->status == 2)
+        {
+            $status = 'Pembayaran Ditolak';
+        }
+        elseif($request->status == 1)
+        {
+            $status = 'Lunas';
+        } else{
+             $status = 'Tidak diketahui';
+        }
+        if(empty(count($pembayaran)))
+        {
+             return redirect()->route('admin.pembayaran')->with(['message_fail' => 'Tidak ada data pembayaran dengan status '.$status.' pada tanggal '.$range.'.']); 
+        }
+      
+         return \Excel::download(new TransaksiExport($pembayaran,$range,$status), 'REPORT_TRANSAKSI_'.str_replace("/", "", $range).'.xlsx');
+        
+    }
+      
 
     public function acc($id)
     {
