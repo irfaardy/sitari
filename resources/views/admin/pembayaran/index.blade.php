@@ -55,6 +55,7 @@
 				<table id="pembayaran" class="table table-stripped table-bordered">
 					<thead>
 						<th>No Invoice</th>
+						<th>Jenis Pembayaran</th>
 						<th>Pengguna</th>
 						<th>No Telp</th>
 						<th>Absensi</th>
@@ -68,6 +69,7 @@
 						@foreach($pembayaran as $dt)
 						<tr>
 							<td>{{$dt->invoice_code}}</td>
+							<td>@if($dt->registrasi_pertama) Pendaftaran @else Biaya Sesi @endif</td>
 							<td>{{$dt->user->name}}</td>
 							<td>{{$dt->user->no_hp}}</td>
 							<td>{{$dt->jumlah_presensi}}</td>

@@ -22,6 +22,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', function(){
         return redirect('/dashboard');
     })->name('dashboard');
+    Route::group(['middleware' => ['sudah_bayar_pendaftaran']], function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 //Admin
     //Pembayaran
@@ -41,9 +42,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/absensi-hari-ini', [App\Http\Controllers\PresensiController::class, 'presensi_self'])->name('presensi.now');
         Route::post('/absensi-hari-ini/action', [App\Http\Controllers\PresensiController::class, 'presensi_self_act'])->name('presensi.action');
         
-
-
-    //news
+        
+        //news
         Route::get('/pengumuman', [App\Http\Controllers\PengumumanController::class, 'index'])->name('pengumuman');
         Route::get('/pengumuman/create', [App\Http\Controllers\PengumumanController::class, 'create'])->name('pengumuman.create');
         Route::get('/news/detail/{id}', [App\Http\Controllers\PengumumanController::class, 'detail'])->name('pengumuman.detail');
@@ -51,7 +51,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/pengumuman/update', [App\Http\Controllers\PengumumanController::class, 'update'])->name('pengumuman.update');
         Route::get('/pengumuman/edit/{id}', [App\Http\Controllers\PengumumanController::class, 'edit'])->name('pengumuman.edit');
         Route::get('/pengumuman/delete/{id}', [App\Http\Controllers\PengumumanController::class, 'delete'])->name('pengumuman.delete');
-//Presensi
+        //Presensi
         Route::get('/presensi', [App\Http\Controllers\PresensiController::class, 'index'])->name('presensi');
         Route::get('/presensi/create', [App\Http\Controllers\PresensiController::class, 'create'])->name('presensi.create');
         Route::post('/presensi/export', [App\Http\Controllers\PresensiController::class, 'export'])->name('presensi.export');
@@ -59,17 +59,22 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/presensi/update', [App\Http\Controllers\PresensiController::class, 'update'])->name('presensi.update');
         Route::get('/presensi/edit/{id}', [App\Http\Controllers\PresensiController::class, 'edit'])->name('presensi.edit');
         Route::get('/presensi/delete/{id}', [App\Http\Controllers\PresensiController::class, 'delete'])->name('presensi.delete');
-
-    //Presensi
+        
+        //Presensi
         Route::get('/biaya-sanggar', [App\Http\Controllers\BiayaSanggarController::class, 'index'])->name('biaya');
         Route::post('/biaya-sanggar/update', [App\Http\Controllers\BiayaSanggarController::class, 'update'])->name('biaya.update');
         
         
-// END ADMIN
-// MEMBER
-    Route::get('/pembayaran', [App\Http\Controllers\PembayaranController::class, 'index'])->name('member.pembayaran');
-    Route::get('/pembayaran/checkout', [App\Http\Controllers\PembayaranController::class, 'checkout'])->name('member.pembayaran.proses'); 
-    Route::get('/pembayaran/riwayat-pembayaran', [App\Http\Controllers\PembayaranController::class, 'riwayat_pembayaran'])->name('member.pembayaran.history'); 
-    Route::post('/pembayaran/checkout/upload', [App\Http\Controllers\PembayaranController::class, 'upload'])->name('member.pembayaran.upload');
-//END MEMBER
+        // END ADMIN
+        // MEMBER
+        Route::get('/pembayaran', [App\Http\Controllers\PembayaranController::class, 'index'])->name('member.pembayaran');
+        Route::get('/pembayaran/checkout', [App\Http\Controllers\PembayaranController::class, 'checkout'])->name('member.pembayaran.proses'); 
+        Route::post('/pembayaran/checkout/upload', [App\Http\Controllers\PembayaranController::class, 'upload'])->name('member.pembayaran.upload');
+    });
+        
+        Route::get('/pendaftaran', [App\Http\Controllers\PembayaranController::class, 'pembayaran_pertama'])->name('member.pembayaran.pertama');
+        Route::get('/pendaftaran/checkout', [App\Http\Controllers\PembayaranController::class, 'checkout_pendaftaran'])->name('member.pembayaran.pendaftaran'); 
+        Route::post('/pendaftaran/checkout/upload', [App\Http\Controllers\PembayaranController::class, 'upload_pendaftaran'])->name('member.pembayaran.upload.pendaftaran');
+        Route::get('/pembayaran/riwayat-pembayaran', [App\Http\Controllers\PembayaranController::class, 'riwayat_pembayaran'])->name('member.pembayaran.history'); 
+        //END MEMBER
 });
