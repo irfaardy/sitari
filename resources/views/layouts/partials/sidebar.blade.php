@@ -55,11 +55,30 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('pengumuman')}}" class="nav-link">
+              <i class="nav-icon fas fa-newspaper"></i>
+              <p>
+                 Pengumuman
+                
+              </p>
+            </a>
+          </li>
           {{-- D --}}
         
           @endif
           {{-- Anggota --}}
           @if(auth()->user()->role == 'member')
+
+          <li class="nav-item">
+            <a href="{{route('presensi.now')}}" class="nav-link">
+              <i class="nav-icon fas fa-user-clock"></i>
+              <p>
+                Presensi
+                
+              </p>
+            </a>
+          </li> 
           <li class="nav-item">
             <a href="{{route('member.pembayaran')}}" class="nav-link">
               <i class="nav-icon fas fa-money-check"></i>

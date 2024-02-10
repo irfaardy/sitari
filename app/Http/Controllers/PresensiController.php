@@ -16,6 +16,32 @@ class PresensiController extends Controller
         $presensi = Presensi::get();
 
         return view('admin/presensi/index')->with(['presensi' => $presensi]);
+    } 
+
+    public function presensi_self()
+    {
+        $presensi = Presensi::where('tanggal',date('Y-m-d'))->where('user_id', auth()->user()->id)->first();
+
+        return view('member/absen')->with(['presensi' => $presensi]);
+    } 
+    public function presensi_self_act()
+    {
+        $presensi = Presensi::where('tanggal',date('Y-m-d'))->where('user_id', auth()->user()->id)->first();
+        if(empty($presensi))
+        {
+
+            Presensi::create([ 
+                'status_kehadiran' => "H",
+                'user_id' => auth()->user()->id,
+                'tanggal' => date('Y-m-d'),
+                'updated_by' => auth()->user()->id,
+            ]);
+
+            return redirect()->back()->with(['message_success' => 'Terimakasih telah melakukan absensi.']);   
+        } else{
+            return redirect()->back()->with(['message_fail' => 'Anda telah melakukan absensi hari ini.']); 
+        }
+        
     }
 
     public function export(Request $request)
