@@ -57,6 +57,7 @@
 						<th>No Invoice</th>
 						<th>Jenis Pembayaran</th>
 						<th>Pengguna</th>
+						<th>Grup Tari</th>
 						<th>No Telp</th>
 						<th>Absensi</th>
 						<th>Total Biaya</th>
@@ -71,6 +72,7 @@
 							<td>{{$dt->invoice_code}}</td>
 							<td>@if($dt->registrasi_pertama) Pendaftaran @else Biaya Sesi @endif</td>
 							<td>{{$dt->user->name}}</td>
+							<td>{{$dt->user->dtgrup->nama}}</td>
 							<td>{{$dt->user->no_hp}}</td>
 							<td>{{$dt->jumlah_presensi}}</td>
 							<td>Rp{{number_format($dt->total_harga)}}</td>

@@ -5,6 +5,7 @@
 	<tr>
 		<td ><b>No</b></td>
 		<td ><b>Nama</b></td>
+		<td ><b>Grup</b></td>
 		<td ><b>No Hp</b></td>
 		<td ><b>Tanggal</b></td>
 		<td ><b>Status Kehadiran</b></td>
@@ -14,6 +15,7 @@
 	<tr>
 		<td >{{$i++}}</td>
 		<td >{{$p->user->name}}</td>
+		<td >{{$p->user->dtgrup->nama}}</td>
 		<td >{{$p->user->no_hp}}</td>
 		<td >{{$p->tanggal}}</td>
 		<td >

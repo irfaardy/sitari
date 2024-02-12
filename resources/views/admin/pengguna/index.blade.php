@@ -12,12 +12,25 @@
 		</div>
 		<div class="col-12">
 			<hr>
+			<div class="row">
+				<div class="col-md-3 col-xs-12">
+					<select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+						<option value="{{route('pengguna')}}">Filter Grup...</option>
+						@foreach($group as $grp)
+						<option value="{{route('pengguna',['group' => $grp->id])}}" @if(Request::get('group') ==  $grp->id) selected='selected' @endif)>{{$grp->nama}}</option>
+						@endforeach
+					</select>
+				</div>
+				</div>
+		
+			<hr>
 			<div class="table-responsive">
 				<table id="pengguna" class="table table-stripped table-bordered">
 					<thead>
-						<th>name</th>
-						<th>email</th>
+						<th>Name</th>
+						<th>Email</th>
 						<th>no hp</th>
+						<th>Grup Tari</th>
 						<th>role</th>
 						<th>jenis kelamin</th>
 						<th>status</th>
@@ -29,6 +42,7 @@
 							<td>{{$dt->name}}</td>
 							<td>{{$dt->email}}</td>
 							<td>{{$dt->no_hp}}</td>
+							<td>{{$dt->dtgrup->nama}}</td>
 							<td>{{$dt->role}}</td>
 							<td>{{$dt->jenis_kelamin}}</td>
 							<td>

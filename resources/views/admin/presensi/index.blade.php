@@ -53,6 +53,7 @@
 					<thead>
 						<th>name</th>
 						<th>no hp</th>
+						<th>Grup</th>
 						<th>Tanggal</th>
 						<th>Status Kehadiran</th>
 						<th>aksi</th>
@@ -62,6 +63,7 @@
 						<tr>
 							<td>{{$dt->user->name}}</td>
 							<td>{{$dt->user->no_hp}}</td>
+							<td>{{$dt->user->dtgrup->nama}}</td>
 							<td>{{$dt->tanggal}}</td>
 							<td>
 								@if($dt->status_kehadiran == "H") 

@@ -33,6 +33,14 @@
 			</select>
 		</div>
 		<div class="col-md-6 col-sm-12">
+			<label>Grup</label>
+			<select name="grup" class="form-control">
+				@foreach($group as $grp)
+				<option value="{{$grp->id}}" @if($user->grup == $grp->id) selected="" @endif>{{$grp->nama}}</option>
+				@endforeach
+			</select>
+		</div>
+		<div class="col-md-6 col-sm-12">
 			<label>Tempat lahir</label>
 			<input class="form-control" type="text" value="{{$user->tempat_lahir}}" name="tempat_lahir">
 		</div>

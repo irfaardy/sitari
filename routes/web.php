@@ -41,6 +41,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/penguna/edit/{id}', [App\Http\Controllers\UserController::class, 'edit'])->name('pengguna.edit');
         Route::get('/absensi-hari-ini', [App\Http\Controllers\PresensiController::class, 'presensi_self'])->name('presensi.now');
         Route::post('/absensi-hari-ini/action', [App\Http\Controllers\PresensiController::class, 'presensi_self_act'])->name('presensi.action');
+    //group
+        Route::get('/grup', [App\Http\Controllers\GrupController::class, 'index'])->name('grup');
+        Route::get('/grup/create', [App\Http\Controllers\GrupController::class, 'create'])->name('grup.create');
+        Route::post('/grup/save', [App\Http\Controllers\GrupController::class, 'save'])->name('grup.save');
+        Route::post('/grup/update', [App\Http\Controllers\GrupController::class, 'update'])->name('grup.update');
+        Route::get('/grup/edit/{id}', [App\Http\Controllers\GrupController::class, 'edit'])->name('grup.edit');
         
         
         //news

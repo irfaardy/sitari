@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Presensi;
 use App\Models\BiayaSanggar;
 use App\Models\Pembayaran;
+use App\Models\User;
 use Hash;
 use Image;
 use Cache;
@@ -22,8 +23,8 @@ class AdmPembayaranController extends Controller
 
     public function export(Request $request)
     {
-       $pembayaran = Pembayaran::whereBetween('dibayarkan_pada', [$request->start."  00:00:00", $request->end."  00:00:00"])->where('status',$request->status)->get();
-         $range = $request->start." s/d ".$request->end;
+        $pembayaran = Pembayaran::whereBetween('dibayarkan_pada', [$request->start."  00:00:00", $request->end."  00:00:00"])->where('status',$request->status)->get();
+        $range = $request->start." s/d ".$request->end;
         if($request->status == 0)
         {
             $status = 'Menunggu Verifikasi Admin';
@@ -50,6 +51,15 @@ class AdmPembayaranController extends Controller
 
     public function acc($id)
     {
+        $pembayaran = Pembayaran::where('id', $id)->first();
+        if(empty($pembayaran))
+        {
+            return redirect()->back()->with(['message_fail' => 'Pembayaran tidak ditemukan']);
+        }
+        if($pembayaran->registrasi_pertama == 1)
+        {
+            User::where('id',$pembayaran->user_id)->update(['status' => 1]);
+        }
         Pembayaran::where('id', $id)->update(['status' => 1]); 
         return redirect()->back()->with(['message_success' => 'Berhasil menyetujui transaksi']);
     }

@@ -4,20 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Grup;
 use Hash;
 class UserController extends Controller
 {
     
-   
-    public function index()
+    public function index(Request $request)
     {
-        $user = User::get();
-        return view('admin/pengguna/index')->with(['user' => $user]);
+        if(empty($request->group))
+        {
+            $user = User::get();
+
+        } else{
+            
+            $user = User::where('grup',$request->group)->get();
+        }
+    
+    
+        $group = Grup::orderBy('nama','ASC')->get();
+        return view('admin/pengguna/index')->with(['user' => $user,'group' => $group]);
     }
 
     public function create()
     {
-        return view('admin/pengguna/create');
+        $group = Grup::orderBy('nama','ASC')->get();
+        return view('admin/pengguna/create')->with(['group' => $group]);
     }
 
     public function save(Request $request)
@@ -42,7 +53,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::where('id',$id)->first();
-        return view('admin/pengguna/edit')->with(['user' => $user]);
+        $group = Grup::orderBy('nama','ASC')->get();
+        return view('admin/pengguna/edit')->with(['user' => $user,'group' => $group]);
     }
 
     public function update(Request $request)
@@ -54,6 +66,7 @@ class UserController extends Controller
                     'password' => "nullable|confirmed|min:8",
                     'no_hp' => "required|string",
                     'role' => "required|in:member,admin",
+                    'grup' => "required",
                     'jenis_kelamin' => "required|in:L,P",
                     'status' => "required|in:0,1,2",
                     ];
@@ -68,10 +81,11 @@ class UserController extends Controller
         $params = [
             'name' => $request->name,
             'email' => $request->email,
-           
+        
             'tempat_lahir' => $request->tempat_lahir,
             'no_hp' => $request->no_hp,
             'role' => $request->role,
+            'grup' => $request->grup,
             'tanggal_lahir' => $request->tanggal_lahir,
             'alamat_lengkap' => $request->alamat_lengkap,
             'jenis_kelamin' => $request->jenis_kelamin,

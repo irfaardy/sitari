@@ -135,6 +135,8 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">{{auth()->user()->name}}</a>
+        
+          <small><b>{{auth()->user()->dtgrup->nama}}</b></small>
         </div>
       </div>
 

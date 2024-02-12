@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\Grup;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -69,6 +70,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $grup = Grup::where('grup_bawaan',1)->first();
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -76,6 +78,7 @@ class RegisterController extends Controller
             'tempat_lahir' => $data['tempat_lahir'],
             'no_hp' => $data['no_telp'],
             'role' => "member",
+            'grup' => empty($grup) ? null:$grup->id,
             'tanggal_lahir' => $data['tanggal_lahir'],
             'alamat_lengkap' => $data['alamat_lengkap'],
             'jenis_kelamin' => $data['jenis_kelamin'],

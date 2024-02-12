@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','email','tempat_lahir','no_hp','role','tanggal_lahir','alamat_lengkap','jenis_kelamin','email_verified_at','password','status'
+        'name','grup','email','tempat_lahir','no_hp','role','tanggal_lahir','alamat_lengkap','jenis_kelamin','email_verified_at','password','status'
     ];
 
     /**
@@ -37,4 +37,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function dtgrup()
+    {
+        return $this->belongsTo(Grup::class, 'grup');
+    }
 }

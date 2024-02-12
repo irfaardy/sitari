@@ -47,10 +47,18 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="{{route('grup')}}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+                 Kelola Grup
+                
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{route('biaya')}}" class="nav-link">
               <i class="nav-icon fas fa-wrench"></i>
               <p>
-                 Pengaturan Biaya
+               Pengaturan Biaya
                 
               </p>
             </a>
