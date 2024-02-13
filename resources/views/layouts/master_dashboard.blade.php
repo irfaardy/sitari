@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sanggar Tari Ayunindya's</title>
+  <title>Sanggar Tari Ayunindya's | @yield('title')</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -16,7 +16,33 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap4.min.css" integrity="sha512-PT0RvABaDhDQugEbpNMwgYBCnGCiTZMh9yOzUsJHDgl/dMhD9yjHAwoumnUk3JydV3QTcIkNDuN40CJxik5+WQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css" integrity="sha512-1k7mWiTNoyx2XtmI96o+hdjP8nn0f3Z2N4oF/9ZZRgijyV4omsKOXEnqL1gKQNPy2MTSP9rIEWGcH/CInulptA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
+<style>.marquee-parent {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 30px;
+}
+.marquee-child {
+  display: block;
+  width: 10000px;
+  /* width of your text div */
+  height: 30px;
+  /* height of your text div */
+  position: absolute;
+  animation: marquee 22s linear infinite; /* change 5s value to your desired speed */
+}
+.marquee-child:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+@keyframes marquee {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: -10200px /* same as your text width */
+  }
+}</style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -29,10 +55,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="/dashboard" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -135,8 +158,11 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">{{auth()->user()->name}}</a>
-        
-          <small><b>{{auth()->user()->dtgrup->nama}}</b></small>
+         @if(auth()->user()->role == "member")
+          @if(auth()->user()->status)
+            <small><b>{{auth()->user()->dtgrup->nama}}</b></small>
+          @endif
+        @endif
         </div>
       </div>
 
@@ -156,12 +182,22 @@
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
+          <div class="col-12">
+            <div class="bg-warning">
+              <marquee  onmouseover="this.stop();" onmouseout="this.start();">
+            
+                  @foreach(\App\Helpers\PengumumanHelper::get(3) as $key => $pengumuman)
+                      <span>@if($key > 0) | @endif {{Str::limit(strip_tags($pengumuman->deskripsi),200)}} </span>
+                  @endforeach
+              </marquee>
+            </div>
+          </div>
           <div class="col-sm-6">
             <h1>@yield('title')</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
               <li class="breadcrumb-item active">@yield('title')</li>
             </ol>
           </div>

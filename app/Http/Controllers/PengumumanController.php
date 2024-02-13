@@ -76,8 +76,8 @@ class PengumumanController extends Controller
         $params = [
             
             'title' => $request->title,
-           
             'deskripsi' => $request->deskripsi,
+            'text_berjalan' => empty($request->text_berjalan)?0:1,
             'updated_by' => auth()->user()->id,
         ];
         return $params;

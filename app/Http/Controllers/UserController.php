@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Grup;
 use Hash;
+use App\Exports\UserExport;
+
 class UserController extends Controller
 {
     
@@ -55,6 +57,22 @@ class UserController extends Controller
         $user = User::where('id',$id)->first();
         $group = Grup::orderBy('nama','ASC')->get();
         return view('admin/pengguna/edit')->with(['user' => $user,'group' => $group]);
+    }
+
+    public function export(Request $request)
+    {
+        if(empty($request->group))
+        {
+            return redirect()->route('pengguna')->with(['message_fail' => 'Mohon pilih grup terlebih dahulu.']); 
+        }
+        $user = User::where('grup',$request->group)->get();
+        $grup = Grup::where('id',$request->group)->first();
+        if(empty(count($user)))
+        {
+            return redirect()->route('pengguna')->with(['message_fail' => 'Tidak ada anggota di grup '. $grup->nama]); 
+        }
+    
+        return \Excel::download(new UserExport($grup->nama,$user), 'ANGGOTA_'.str_replace(' ','-',$grup->nama)."_".date('Ymd').'.xlsx');
     }
 
     public function update(Request $request)

@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/kelola/pembayaran/revoke/{id}', [App\Http\Controllers\AdmPembayaranController::class, 'revoke'])->name('admin.pembayaran.revoke');
     //Pengguna
         Route::get('/penguna', [App\Http\Controllers\UserController::class, 'index'])->name('pengguna');
+        Route::post('/penguna/export', [App\Http\Controllers\UserController::class, 'export'])->name('pengguna.export');
         Route::get('/penguna/create', [App\Http\Controllers\UserController::class, 'create'])->name('pengguna.create');
         Route::post('/penguna/save', [App\Http\Controllers\UserController::class, 'save'])->name('pengguna.save');
         Route::post('/penguna/update', [App\Http\Controllers\UserController::class, 'update'])->name('pengguna.update');

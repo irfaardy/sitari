@@ -1,5 +1,5 @@
 @extends('layouts.master_dashboard')
-@section('title','Ubah data Pengguna')
+@section('title','Ubah data Grup')
 @section('content')
 <form action="{{route('grup.update')}}" method="POST">
 	@csrf

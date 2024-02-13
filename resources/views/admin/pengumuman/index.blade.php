@@ -18,6 +18,7 @@
 					<thead>
 						<th>Judul</th>
 						<th>Deskripsi</th>
+						<th>Text Berjalan</th>
 						<th>Tanggal</th>
 						<th>aksi</th>
 					</thead>
@@ -26,6 +27,7 @@
 						<tr>
 							<td>{{$dt->title}}</td>
 							<td>{{strip_tags(Str::limit($dt->deskripsi,60))}}</td>
+							<td>{{empty($dt->text_berjalan) ? "-":'Ya'}}</td>
 							<td>{{$dt->created_at}}</td>
 							<td>
 								<a href="{{route('pengumuman.detail',['id' => $dt->id])}}" class="btn btn-success">Detail</a>

@@ -12,15 +12,32 @@
 		</div>
 		<div class="col-12">
 			<hr>
+			<form action="{{route('pengguna.export')}}" method="post">
+				@csrf
 			<div class="row">
 				<div class="col-md-3 col-xs-12">
-					<select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-						<option value="{{route('pengguna')}}">Filter Grup...</option>
+					<select class="form-control" name="group">
+						<option value="">Pilih Grup</option>
 						@foreach($group as $grp)
-						<option value="{{route('pengguna',['group' => $grp->id])}}" @if(Request::get('group') ==  $grp->id) selected='selected' @endif)>{{$grp->nama}}</option>
+						<option value="{{$grp->id}}" @if(Request::get('group') ==  $grp->id) selected='selected' @endif)>{{$grp->nama}}</option>
 						@endforeach
 					</select>
 				</div>
+				<div class="col-md-1 col-xs-12">
+					<button class="btn btn-block btn-success" type="submit">Export</button>
+				</div>
+				
+			</div>
+			</form>
+
+				<div class="row">
+					<div class="col-md-12 col-xs-12">
+						<hr>
+						<h5>Grup</h5>
+						@foreach($group as $grp)
+						<a  href="{{route('pengguna',['group' => $grp->id])}}" class="btn btn-sm btn-primary">{{$grp->nama}}</a>
+						@endforeach
+					</div>
 				</div>
 		
 			<hr>

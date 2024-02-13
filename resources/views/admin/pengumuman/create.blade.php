@@ -14,6 +14,12 @@
 			<label>Deskripsi Pengumuman</label>
 			<textarea  name="deskripsi" class="form-control ck"></textarea>
 		</div>
+		<div class="col-12">
+		</div>
+		<div class="col-md-6 col-sm-12">
+			<input type="checkbox" id="bawaan" name="text_berjalan" value="1" >
+			<label for="bawaan">Tampilkan di text bejalan</label>
+		</div>
 	</div>
 	<div class="row mt-3">
 		<div class="col-md-6">

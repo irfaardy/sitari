@@ -1,6 +1,6 @@
 
 @extends('layouts.master_dashboard')
-@section('title','Grup')
+@section('title','Kelola Grup')
 @section('content')
 	<div class="row">
 		<div class="col-md-6">

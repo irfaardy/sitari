@@ -10,7 +10,7 @@ class Pengumuman extends Model
     use HasFactory;
     protected $table = 'pengumuman';
     protected $fillable = [
-      'title','deskripsi','updated_by'
+      'title','deskripsi','updated_by','text_berjalan'
     ];
 
     public function user()
