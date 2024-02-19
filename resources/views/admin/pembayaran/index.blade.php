@@ -28,6 +28,14 @@
 			        				<option value="2">Ditolak</option>
 			        				<option value="0">Menunggu Verifikasi</option>
 			        			</select>
+			        		</div>
+			        		<div class="col-md-12">
+			        			<label>Pilih Kategori</label>
+			        			<select name="kategori" required class="form-control">
+			        				<option>Pilih salah satu</option>
+			        				<option value="1">Pendaftaran</option>
+			        				<option value="0">Presensi</option>
+			        			</select>
 			        		</div><div class="col-md-6">
 			        			<label>Tgl Awal</label>
 			        			<input required type="date" max="{{date('Y-m-d')}}" name="start" class="form-control">

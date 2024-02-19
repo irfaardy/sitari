@@ -21,17 +21,19 @@ class TransaksiExport implements FromView,ShouldAutoSize,WithEvents
             },
         ];
     }
-    public function __construct($transaksi_data,$range,$status)
+    public function __construct($transaksi_data,$range,$status,$kategori)
     {
         $this->transaksi_data = $transaksi_data;
         $this->range = $range;
         $this->status = $status;
+        $this->kategori = $kategori;
     }
     public function view(): View
     {
         return view('exports.transaksi', [
             'transaksi' => $this->transaksi_data,
             'range' => $this->range,
+            'kategori' => $this->kategori,
             'status' => $this->status
         ]);
     }

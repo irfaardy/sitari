@@ -23,7 +23,13 @@ class AdmPembayaranController extends Controller
 
     public function export(Request $request)
     {
-        $pembayaran = Pembayaran::whereBetween('dibayarkan_pada', [$request->start."  00:00:00", $request->end."  00:00:00"])->where('status',$request->status)->get();
+        if($request->kategori == 1)
+        {
+            $kategori = 'Pendaftaran';
+        } else{
+            $kategori = 'Presensi';
+        }
+        $pembayaran = Pembayaran::where('registrasi_pertama',intval($request->kategori))->whereBetween('dibayarkan_pada', [$request->start."  00:00:00", $request->end."  00:00:00"])->where('status',$request->status)->get();
         $range = $request->start." s/d ".$request->end;
         if($request->status == 0)
         {
@@ -44,7 +50,7 @@ class AdmPembayaranController extends Controller
              return redirect()->route('admin.pembayaran')->with(['message_fail' => 'Tidak ada data pembayaran dengan status '.$status.' pada tanggal '.$range.'.']); 
         }
       
-         return \Excel::download(new TransaksiExport($pembayaran,$range,$status), 'REPORT_TRANSAKSI_'.str_replace("/", "", $range).'.xlsx');
+         return \Excel::download(new TransaksiExport($pembayaran,$range,$status,$kategori), 'REPORT_TRANSAKSI_'.strtoupper($kategori).'_'.str_replace("/", "", $range).'.xlsx');
         
     }
       

@@ -22,7 +22,16 @@
         @include('layouts/partials/nav')
           <div
             class="miri-ui-kit-header-content  text-white d-flex flex-column justify-content-center container text-right">
-            <h1 class="display-3 text-white text"></h1>
+            <h3 class="text-white">SANGGAR TARI JAIPONG AYUNINDYA’S</h3>
+            <h5 class="text-white">Di buka kelas Tari Jaipong <br>
+                    dibawah asuhan sang Maestro<br>
+                    “INTANDIA KUSMIATI”</br>
+                    
+                    FREE SELENDANG<br>
+                    Untuk 10 Pendaftar Pertama
+                    <br>
+                    Hubungi WA : 0818 0479 2620
+                    </h5>
             {{-- <p class="h3 font-weight-light text-white"></p> --}}
             <p class="mt-4"><a href="{{route('register')}}" class="btn btn-success btn-pill">Daftar</a></p>
         </div>

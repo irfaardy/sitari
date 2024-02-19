@@ -1,6 +1,6 @@
 <table border="1px">
 	<tr>
-		<td style="border: 1px #000 solid;" colspan="9" align="center">Laporan Transaksi {{$range}} (Status: {{$status}})</td>
+		<td style="border: 1px #000 solid;" colspan="9" align="center">Laporan Transaksi {{$kategori}} {{$range}} (Status: {{$status}})</td>
 	</tr>
 	<tr>
 		<td ><b>Invoice</b></td>
@@ -41,10 +41,10 @@
 	</tr>
 	@endforeach
 	<tr>
-		<td colspan="4" align="center"><b>Total</b></td>
+		<td colspan="5" align="center"><b>Total</b></td>
 		<td><b>{{$biaya_adm}}</b></td>
 		<td><b>{{$harga}}</b></td>
-		<td><b>{{$ppn}}</b></td>
+		<td><b>{{empty($ppn) ? '-':$ppn}}</b></td>
 		<td><b>{{$total_harga}}</b></td>
 	</tr>
 </table>
