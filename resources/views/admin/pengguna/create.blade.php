@@ -34,9 +34,9 @@
 		<div class="col-md-6 col-sm-12">
 			<label>Grup</label>
 			<select name="grup" class="form-control">
-				<option value="A">Grup A</option>
-				<option value="B" >Grup B</option>
-				<option value="C" selected>Grup C</option>
+				@foreach($group as $grp)
+				<option value="{{$grp->id}}" >{{$grp->nama}}</option>
+				@endforeach
 			</select>
 		</div>
 		<div class="col-md-6 col-sm-12">
